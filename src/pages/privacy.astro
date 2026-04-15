@@ -1,0 +1,82 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Privacy Policy — Signario"
+  description="How Signario collects, uses, and protects your personal data."
+>
+  <Nav />
+
+  <main class="pt-32 pb-24 px-6">
+    <div class="max-w-2xl mx-auto">
+      <h1 class="text-3xl sm:text-4xl font-bold text-white mb-2">Privacy Policy</h1>
+      <p class="text-slate-500 text-sm mb-12">Last updated: April 2026</p>
+
+      <div class="prose prose-invert prose-slate max-w-none space-y-8 text-slate-400 leading-relaxed text-sm">
+
+        <section>
+          <h2 class="text-lg font-semibold text-white mb-3">1. Who we are</h2>
+          <p>
+            Signario ("we", "our", "us") is an AI-powered customer feedback management tool for B2B product teams.
+            Our website is <a href="https://signario.io" class="text-blue-400 hover:text-blue-300">signario.io</a>.
+            For privacy questions, contact us at <a href="mailto:hello@signario.io" class="text-blue-400 hover:text-blue-300">hello@signario.io</a>.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-lg font-semibold text-white mb-3">2. Data we collect on this website</h2>
+          <p class="mb-3">On the signario.io marketing website, we collect:</p>
+          <ul class="list-disc pl-5 space-y-2">
+            <li><strong class="text-slate-300">Email address</strong> — when you submit the waitlist form. Used only to contact you about early access.</li>
+            <li><strong class="text-slate-300">Analytics data</strong> — page views and click events via PostHog, only if you accept cookies. Data is anonymised and aggregated.</li>
+          </ul>
+          <p class="mt-3">We do not sell, rent, or share your email address with third parties for marketing purposes.</p>
+        </section>
+
+        <section>
+          <h2 class="text-lg font-semibold text-white mb-3">3. Cookies</h2>
+          <p>
+            We use cookies only for analytics (PostHog). A cookie consent banner is shown on your first visit.
+            If you decline, no tracking cookies are set. You can change your preference at any time by clearing
+            your browser's local storage for signario.io.
+          </p>
+        </section>
+
+        <section>
+          <h2 class="text-lg font-semibold text-white mb-3">4. Third-party services</h2>
+          <ul class="list-disc pl-5 space-y-2">
+            <li><strong class="text-slate-300">Web3Forms</strong> — processes waitlist form submissions and forwards them to our inbox. See <a href="https://web3forms.com/privacy" class="text-blue-400 hover:text-blue-300" target="_blank" rel="noopener noreferrer">Web3Forms Privacy Policy</a>.</li>
+            <li><strong class="text-slate-300">PostHog</strong> — analytics, only with your consent. Data stored in the EU/US. See <a href="https://posthog.com/privacy" class="text-blue-400 hover:text-blue-300" target="_blank" rel="noopener noreferrer">PostHog Privacy Policy</a>.</li>
+            <li><strong class="text-slate-300">Vercel</strong> — website hosting. See <a href="https://vercel.com/legal/privacy-policy" class="text-blue-400 hover:text-blue-300" target="_blank" rel="noopener noreferrer">Vercel Privacy Policy</a>.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2 class="text-lg font-semibold text-white mb-3">5. Your rights (GDPR)</h2>
+          <p>If you are in the EU/EEA, you have the right to access, correct, or delete your personal data. To exercise these rights, email <a href="mailto:hello@signario.io" class="text-blue-400 hover:text-blue-300">hello@signario.io</a>. We will respond within 30 days.</p>
+        </section>
+
+        <section>
+          <h2 class="text-lg font-semibold text-white mb-3">6. Data retention</h2>
+          <p>Waitlist email addresses are retained until you request deletion or the waitlist closes. Analytics data is retained per PostHog's default retention policy (1 year).</p>
+        </section>
+
+        <section>
+          <h2 class="text-lg font-semibold text-white mb-3">7. Changes to this policy</h2>
+          <p>We may update this policy as the product evolves. Material changes will be communicated via email to waitlist members. The "Last updated" date at the top reflects the most recent revision.</p>
+        </section>
+
+        <section>
+          <h2 class="text-lg font-semibold text-white mb-3">8. Contact</h2>
+          <p>Questions about this policy? Email <a href="mailto:hello@signario.io" class="text-blue-400 hover:text-blue-300">hello@signario.io</a>.</p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

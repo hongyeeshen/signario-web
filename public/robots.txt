@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://signario.io/sitemap-index.xml

@@ -1,0 +1,110 @@
+---
+const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
+---
+
+<section id="waitlist" class="py-24 px-6">
+  <div class="max-w-2xl mx-auto text-center">
+
+    <div class="bg-gradient-to-br from-blue-950/60 to-[#0d1627] border border-blue-800/30 rounded-3xl p-10 sm:p-14">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white leading-tight mb-4">
+        Get early access to Signario
+      </h2>
+      <p class="text-slate-400 leading-relaxed mb-8">
+        Be among the first B2B product teams to use Signario.
+        Founder pricing locked in for early members.
+      </p>
+
+      <form id="waitlist-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+        <input type="hidden" name="access_key" value={web3formsKey} />
+        <input type="hidden" name="subject" value="New Signario Waitlist Signup" />
+        <input type="hidden" name="from_name" value="Signario Website" />
+        <input type="checkbox" name="botcheck" style="display:none" />
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder="you@company.com"
+          class="flex-1 bg-[#080e1a] border border-[#1e2d4a] text-white placeholder-slate-600 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 transition-colors"
+        />
+        <button
+          type="submit"
+          onclick="window.posthog?.capture('cta_clicked', { location: 'waitlist' })"
+          class="bg-blue-600 hover:bg-blue-500 text-white font-medium px-6 py-3 rounded-xl transition-colors text-sm whitespace-nowrap"
+        >
+          Get early access
+        </button>
+      </form>
+
+      <div id="waitlist-success" class="hidden mt-6 text-emerald-400 text-sm font-medium">
+        You're on the list — we'll be in touch shortly.
+      </div>
+      <div id="waitlist-error" class="hidden mt-6 text-red-400 text-sm">
+        Something went wrong. Please try again.
+      </div>
+
+      <p class="text-xs text-slate-600 mt-4">
+        We'll reach out personally. No spam, ever.
+      </p>
+    </div>
+
+    <!-- PRICING: uncomment when pricing model is set
+    <div class="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div class="bg-[#0d1627] border border-[#1e2d4a] rounded-2xl p-6 text-left">
+        <p class="text-slate-500 text-sm mb-1">Starter</p>
+        <p class="text-3xl font-bold text-white mb-1">$XX<span class="text-lg font-normal text-slate-500">/mo</span></p>
+        <p class="text-slate-500 text-xs mb-4">1 product · up to X seats</p>
+        <a href="#waitlist" class="block text-center text-sm border border-[#1e2d4a] text-slate-300 hover:text-white py-2 rounded-lg transition-colors">Get started</a>
+      </div>
+      <div class="bg-gradient-to-br from-blue-900/40 to-[#0d1627] border border-blue-700/50 rounded-2xl p-6 text-left relative">
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-xs px-3 py-1 rounded-full">Most popular</span>
+        <p class="text-slate-400 text-sm mb-1">Growth</p>
+        <p class="text-3xl font-bold text-white mb-1">$XX<span class="text-lg font-normal text-slate-400">/mo</span></p>
+        <p class="text-slate-500 text-xs mb-4">X products · up to X seats</p>
+        <a href="#waitlist" class="block text-center text-sm bg-blue-600 hover:bg-blue-500 text-white py-2 rounded-lg transition-colors">Get started</a>
+      </div>
+      <div class="bg-[#0d1627] border border-[#1e2d4a] rounded-2xl p-6 text-left">
+        <p class="text-slate-500 text-sm mb-1">Scale</p>
+        <p class="text-3xl font-bold text-white mb-1">$XX<span class="text-lg font-normal text-slate-500">/mo</span></p>
+        <p class="text-slate-500 text-xs mb-4">Unlimited · X seats</p>
+        <a href="#waitlist" class="block text-center text-sm border border-[#1e2d4a] text-slate-300 hover:text-white py-2 rounded-lg transition-colors">Get started</a>
+      </div>
+    </div>
+    -->
+
+    <!-- STRIPE: uncomment when ready to charge
+    <script>
+      async function startCheckout(priceId) {
+        const res = await fetch('/api/create-checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ priceId }),
+        });
+        const { url } = await res.json();
+        window.location.href = url;
+      }
+    </script>
+    -->
+
+  </div>
+</section>
+
+<script is:inline>
+  document.getElementById('waitlist-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+      const json = await res.json();
+      if (json.success) {
+        form.style.display = 'none';
+        document.getElementById('waitlist-success').classList.remove('hidden');
+        window.posthog?.capture('waitlist_signed_up', { location: 'waitlist' });
+      } else {
+        document.getElementById('waitlist-error').classList.remove('hidden');
+      }
+    } catch {
+      document.getElementById('waitlist-error').classList.remove('hidden');
+    }
+  });
+</script>

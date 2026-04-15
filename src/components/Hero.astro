@@ -1,0 +1,184 @@
+---
+const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
+---
+
+<section class="pt-32 pb-16 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 items-center">
+
+      <!-- Copy -->
+      <div class="flex-1 text-center lg:text-left">
+        <div class="inline-flex items-center gap-2 bg-blue-950/50 border border-blue-800/40 rounded-full px-4 py-1.5 text-sm text-blue-300 mb-6">
+          <span class="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0"></span>
+          Now in early access
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] tracking-tight mb-5">
+          Build what your
+          <span class="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent"> best customers</span>
+          actually need
+        </h1>
+
+        <p class="text-lg text-slate-400 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
+          Signario is an AI-powered customer feedback management tool for B2B product teams.
+          Group feedback into insights, prioritize by revenue impact, ship with confidence.
+        </p>
+
+        <!-- Waitlist form (hero) -->
+        <form id="hero-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto lg:mx-0">
+          <input type="hidden" name="access_key" value={web3formsKey} />
+          <input type="hidden" name="subject" value="New Signario Waitlist Signup" />
+          <input type="hidden" name="from_name" value="Signario Website" />
+          <input type="checkbox" name="botcheck" style="display:none" />
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder="you@company.com"
+            class="flex-1 bg-[#0d1627] border border-[#1e2d4a] text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 transition-colors"
+          />
+          <button
+            type="submit"
+            onclick="window.posthog?.capture('cta_clicked', { location: 'hero' })"
+            class="bg-blue-600 hover:bg-blue-500 text-white font-medium px-6 py-3 rounded-xl transition-colors text-sm whitespace-nowrap"
+          >
+            Get early access
+          </button>
+        </form>
+
+        <div id="hero-success" class="hidden mt-4 text-sm text-emerald-400">
+          You're on the list — we'll be in touch shortly.
+        </div>
+        <div id="hero-error" class="hidden mt-4 text-sm text-red-400">
+          Something went wrong. Please try again.
+        </div>
+
+        <p class="text-xs text-slate-600 mt-3">
+          We'll reach out personally. Founder pricing locked in for early members.
+        </p>
+
+        <!-- VIDEO CTA: uncomment when demo video is ready -->
+        <!--
+        <a href="#" class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-white mt-4 transition-colors">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+          Watch 2-min demo
+        </a>
+        -->
+      </div>
+
+      <!-- Browser mockup -->
+      <div class="flex-1 w-full max-w-xl mx-auto lg:mx-0">
+        <div class="relative">
+          <!-- Glow -->
+          <div class="absolute -inset-4 bg-blue-600/10 blur-3xl rounded-3xl pointer-events-none"></div>
+
+          <!-- Browser frame -->
+          <div class="relative bg-[#0d1627] rounded-2xl border border-[#1e2d4a] overflow-hidden shadow-2xl">
+
+            <!-- Chrome bar -->
+            <div class="px-4 py-3 border-b border-[#1e2d4a] flex items-center gap-3 bg-[#080e1a]/60">
+              <div class="flex gap-1.5">
+                <div class="w-3 h-3 rounded-full bg-red-500/60"></div>
+                <div class="w-3 h-3 rounded-full bg-yellow-500/60"></div>
+                <div class="w-3 h-3 rounded-full bg-green-500/60"></div>
+              </div>
+              <div class="flex-1 bg-[#0d1627] rounded-md px-3 py-1 text-xs text-slate-600 font-mono">
+                app.signario.io
+              </div>
+            </div>
+
+            <!-- App UI -->
+            <div class="flex" style="min-height: 280px;">
+              <!-- Sidebar -->
+              <div class="w-12 border-r border-[#1e2d4a] flex flex-col items-center py-4 gap-3 bg-[#080e1a]/40">
+                <div class="w-6 h-6 rounded-lg bg-blue-600/50 flex items-center justify-center">
+                  <div class="w-2 h-2 rounded-sm bg-blue-400"></div>
+                </div>
+                <div class="w-6 h-6 rounded-lg bg-[#1e2d4a]/60"></div>
+                <div class="w-6 h-6 rounded-lg bg-[#1e2d4a]/60"></div>
+                <div class="w-6 h-6 rounded-lg bg-[#1e2d4a]/60"></div>
+              </div>
+
+              <!-- Content -->
+              <div class="flex-1 p-4">
+                <div class="flex items-center justify-between mb-4">
+                  <span class="text-xs font-semibold text-white">Insights</span>
+                  <span class="text-xs px-2 py-1 rounded-lg bg-blue-600/20 text-blue-400 border border-blue-600/20">+ New</span>
+                </div>
+
+                <!-- Cluster cards -->
+                <div class="space-y-2">
+                  <div class="bg-[#080e1a] rounded-xl p-3 border border-[#1e2d4a]">
+                    <div class="flex items-start justify-between gap-2 mb-1.5">
+                      <span class="text-xs font-medium text-white leading-snug">Login flow broken on mobile</span>
+                      <span class="text-xs px-2 py-0.5 rounded-full bg-red-500/15 text-red-400 border border-red-500/20 shrink-0">Urgent</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-slate-600">
+                      <span class="text-emerald-500 font-medium">$84k ARR</span>
+                      <span>·</span>
+                      <span>12 accounts</span>
+                      <span>·</span>
+                      <span>9 reports</span>
+                    </div>
+                  </div>
+
+                  <div class="bg-[#080e1a] rounded-xl p-3 border border-[#1e2d4a]">
+                    <div class="flex items-start justify-between gap-2 mb-1.5">
+                      <span class="text-xs font-medium text-white leading-snug">Bulk export missing</span>
+                      <span class="text-xs px-2 py-0.5 rounded-full bg-orange-500/15 text-orange-400 border border-orange-500/20 shrink-0">High</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-slate-600">
+                      <span class="text-emerald-500 font-medium">$41k ARR</span>
+                      <span>·</span>
+                      <span>8 accounts</span>
+                      <span>·</span>
+                      <span>5 reports</span>
+                    </div>
+                  </div>
+
+                  <div class="bg-[#080e1a] rounded-xl p-3 border border-[#1e2d4a]">
+                    <div class="flex items-start justify-between gap-2 mb-1.5">
+                      <span class="text-xs font-medium text-white leading-snug">API rate limit documentation</span>
+                      <span class="text-xs px-2 py-0.5 rounded-full bg-yellow-500/15 text-yellow-400 border border-yellow-500/20 shrink-0">Medium</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-xs text-slate-600">
+                      <span class="text-emerald-500 font-medium">$18k ARR</span>
+                      <span>·</span>
+                      <span>5 accounts</span>
+                      <span>·</span>
+                      <span>3 reports</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.getElementById('hero-form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+      const json = await res.json();
+      if (json.success) {
+        form.style.display = 'none';
+        document.getElementById('hero-success').classList.remove('hidden');
+        window.posthog?.capture('waitlist_signed_up', { location: 'hero' });
+      } else {
+        document.getElementById('hero-error').classList.remove('hidden');
+      }
+    } catch {
+      document.getElementById('hero-error').classList.remove('hidden');
+    }
+  });
+</script>

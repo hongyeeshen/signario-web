@@ -1,0 +1,114 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Problem from '../components/Problem.astro';
+import Feature from '../components/Feature.astro';
+import IntegrationFlow from '../components/IntegrationFlow.astro';
+import FounderNote from '../components/FounderNote.astro';
+import Waitlist from '../components/Waitlist.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Signario — AI Feedback Management for B2B Product Teams"
+  description="Signario turns scattered customer feedback into revenue-weighted insights. Group feedback by theme, prioritise by ARR impact, and push tickets to Linear or Jira — in one click."
+>
+  <Nav />
+  <Hero />
+  <Problem />
+
+  <!-- Feature 1: AI clustering -->
+  <Feature
+    eyebrow="Collect & Organise"
+    title="50 pieces of feedback. 5 insights worth acting on."
+    description="Signario automatically groups incoming feedback into themes using AI — so you see patterns, not a pile of raw messages. No tagging, no manual sorting."
+    bullets={[
+      'Auto-clusters feedback from Slack, CSV, or web widget',
+      'Merges duplicates and surfaces recurring themes',
+      'New feedback slots into the right cluster instantly',
+    ]}
+  >
+    <!-- Clustering mockup -->
+    <div class="relative">
+      <div class="absolute -inset-4 bg-cyan-600/10 blur-3xl rounded-3xl pointer-events-none"></div>
+      <div class="relative bg-[#0d1627] rounded-2xl border border-[#1e2d4a] overflow-hidden shadow-2xl p-5">
+        <div class="flex items-center justify-between mb-4">
+          <span class="text-xs font-semibold text-white">AI Clustering</span>
+          <span class="text-xs text-slate-500">47 items → 6 clusters</span>
+        </div>
+        <div class="space-y-2.5">
+          {[
+            { label: 'Login flow broken on mobile', count: 12, pct: 88 },
+            { label: 'Bulk export missing', count: 9, pct: 72 },
+            { label: 'API rate limit docs unclear', count: 7, pct: 58 },
+            { label: 'Dashboard loading slow', count: 6, pct: 48 },
+            { label: 'Webhook retry on failure', count: 5, pct: 40 },
+          ].map(({ label, count, pct }) => (
+            <div>
+              <div class="flex items-center justify-between text-xs mb-1">
+                <span class="text-slate-300 truncate pr-2">{label}</span>
+                <span class="text-slate-500 shrink-0">{count} reports</span>
+              </div>
+              <div class="h-1.5 bg-[#080e1a] rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full" style={`width: ${pct}%`}></div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div class="mt-4 pt-4 border-t border-[#1e2d4a] flex items-center gap-2 text-xs text-slate-600">
+          <svg class="w-3.5 h-3.5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z" />
+          </svg>
+          <span>AI grouped 47 items into 6 clusters</span>
+        </div>
+      </div>
+    </div>
+  </Feature>
+
+  <!-- Feature 2: ARR-weighted priority -->
+  <Feature
+    eyebrow="Prioritise by Revenue"
+    title="Stop guessing. Let ARR decide what ships next."
+    description="Signario enriches every cluster with the revenue tied to the requesting accounts. You see exactly how much ARR is affected — so the decision is data-driven, not political."
+    bullets={[
+      'Links feedback to CRM accounts (HubSpot supported)',
+      'Calculates total ARR and deal size per cluster',
+      'Priority score auto-updates as new feedback arrives',
+    ]}
+    reverse={true}
+  >
+    <!-- ARR priority mockup -->
+    <div class="relative">
+      <div class="absolute -inset-4 bg-blue-600/10 blur-3xl rounded-3xl pointer-events-none"></div>
+      <div class="relative bg-[#0d1627] rounded-2xl border border-[#1e2d4a] overflow-hidden shadow-2xl">
+        <div class="px-4 py-3 border-b border-[#1e2d4a] flex items-center gap-3 bg-[#080e1a]/60">
+          <span class="text-xs font-semibold text-white">Priority Ranking</span>
+          <span class="ml-auto text-xs text-slate-500">Sorted by ARR impact</span>
+        </div>
+        <div class="divide-y divide-[#1e2d4a]">
+          {[
+            { title: 'Login flow broken on mobile', arr: '$84k', badge: 'Urgent', badgeColor: 'bg-red-500/15 text-red-400 border-red-500/20', accounts: 12 },
+            { title: 'Bulk export missing', arr: '$41k', badge: 'High', badgeColor: 'bg-orange-500/15 text-orange-400 border-orange-500/20', accounts: 8 },
+            { title: 'API rate limit docs unclear', arr: '$18k', badge: 'Medium', badgeColor: 'bg-yellow-500/15 text-yellow-400 border-yellow-500/20', accounts: 5 },
+            { title: 'Dashboard loading slow', arr: '$12k', badge: 'Medium', badgeColor: 'bg-yellow-500/15 text-yellow-400 border-yellow-500/20', accounts: 4 },
+          ].map(({ title, arr, badge, badgeColor, accounts }) => (
+            <div class="flex items-center gap-3 px-4 py-3">
+              <div class="flex-1 min-w-0">
+                <p class="text-xs font-medium text-white truncate">{title}</p>
+                <p class="text-xs text-slate-600 mt-0.5">{accounts} accounts</p>
+              </div>
+              <span class="text-emerald-500 font-semibold text-xs shrink-0">{arr}</span>
+              <span class={`text-xs px-2 py-0.5 rounded-full border shrink-0 ${badgeColor}`}>{badge}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </Feature>
+
+  <IntegrationFlow />
+  <FounderNote />
+  <Waitlist />
+  <Footer />
+</Layout>
