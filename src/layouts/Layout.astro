@@ -79,6 +79,7 @@ const schema = {
         posthog.init(posthogKey, {
           api_host: posthogHost,
           person_profiles: 'identified_only',
+          ip: false,
         });
       }
       window.initPostHog = initPostHog;

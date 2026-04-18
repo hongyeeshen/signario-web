@@ -1,5 +1,4 @@
 ---
-const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
 ---
 
 <section class="pt-32 pb-16 px-6">
@@ -26,10 +25,6 @@ const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
 
         <!-- Waitlist form (hero) -->
         <form id="hero-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto lg:mx-0">
-          <input type="hidden" name="access_key" value={web3formsKey} />
-          <input type="hidden" name="subject" value="New Signario Waitlist Signup" />
-          <input type="hidden" name="from_name" value="Signario Website" />
-          <input type="checkbox" name="botcheck" style="display:none" />
           <input
             type="email"
             name="email"
@@ -39,7 +34,6 @@ const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
           />
           <button
             type="submit"
-            onclick="window.posthog?.capture('cta_clicked', { location: 'hero' })"
             class="bg-blue-600 hover:bg-blue-500 text-white font-medium px-6 py-3 rounded-xl transition-colors text-sm whitespace-nowrap"
           >
             Get early access
@@ -54,7 +48,7 @@ const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
         </div>
 
         <p class="text-xs text-slate-600 mt-3">
-          We'll reach out personally. Founder pricing locked in for early members.
+          By submitting, you agree to our <a href="/privacy" class="underline hover:text-slate-400 transition-colors">Privacy Policy</a>. We'll reach out personally. Founder pricing locked in for early members.
         </p>
 
         <!-- VIDEO CTA: uncomment when demo video is ready -->
@@ -166,11 +160,15 @@ const web3formsKey = import.meta.env.PUBLIC_WEB3FORMS_KEY;
   document.getElementById('hero-form').addEventListener('submit', async function (e) {
     e.preventDefault();
     const form = e.target;
-    const data = new FormData(form);
+    const email = form.querySelector('input[type="email"]').value;
     try {
-      const res = await fetch('https://api.web3forms.com/submit', { method: 'POST', body: data });
+      const res = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
       const json = await res.json();
-      if (json.success) {
+      if (json.ok) {
         form.style.display = 'none';
         document.getElementById('hero-success').classList.remove('hidden');
         window.posthog?.capture('waitlist_signed_up', { location: 'hero' });
