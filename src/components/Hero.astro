@@ -9,7 +9,7 @@
       <div class="flex-1 text-center lg:text-left">
         <div class="inline-flex items-center gap-2 bg-blue-950/50 border border-blue-800/40 rounded-full px-4 py-1.5 text-sm text-blue-300 mb-6">
           <span class="w-1.5 h-1.5 rounded-full bg-blue-400 shrink-0"></span>
-          Now in early access
+          Now in private beta with 3 teams
         </div>
 
         <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] tracking-tight mb-5">
@@ -17,41 +17,10 @@
           <span class="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent"> confident roadmap decisions.</span>
         </h1>
 
-        <p class="text-lg text-slate-400 leading-relaxed mb-4 max-w-xl mx-auto lg:mx-0">
-          Signario clusters feedback, weights it by ARR impact, and closes the loop when requests ship — so your team always knows what to build next, and why.
+        <p class="text-base text-slate-400 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
+          Signario clusters feedback and weights it by ARR impact — so your team always knows what to build next, and why.
         </p>
 
-        <p class="text-sm text-slate-500 leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
-          Built for B2B SaaS teams that have outgrown spreadsheets but don't need a heavyweight roadmap suite.
-        </p>
-
-        <!-- Waitlist form (hero) -->
-        <form id="hero-form" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto lg:mx-0">
-          <input
-            type="email"
-            name="email"
-            required
-            placeholder="you@company.com"
-            class="flex-1 bg-[#0d1627] border border-[#1e2d4a] text-white placeholder-slate-500 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-blue-500 transition-colors"
-          />
-          <button
-            type="submit"
-            class="bg-blue-600 hover:bg-blue-500 text-white font-medium px-6 py-3 rounded-xl transition-colors text-sm whitespace-nowrap"
-          >
-            Get early access
-          </button>
-        </form>
-
-        <div id="hero-success" class="hidden mt-4 text-sm text-emerald-400">
-          You're on the list — we'll be in touch shortly.
-        </div>
-        <div id="hero-error" class="hidden mt-4 text-sm text-red-400">
-          Something went wrong. Please try again.
-        </div>
-
-        <p class="text-xs text-slate-600 mt-3">
-          Founder pricing locked for the first 50 teams. · <a href="/privacy" class="underline hover:text-slate-400 transition-colors">Privacy Policy</a>
-        </p>
 
         <!-- VIDEO CTA: uncomment when demo video is ready -->
         <!--
@@ -158,27 +127,3 @@
   </div>
 </section>
 
-<script is:inline>
-  document.getElementById('hero-form').addEventListener('submit', async function (e) {
-    e.preventDefault();
-    const form = e.target;
-    const email = form.querySelector('input[type="email"]').value;
-    try {
-      const res = await fetch('/api/waitlist', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
-      const json = await res.json();
-      if (json.ok) {
-        form.style.display = 'none';
-        document.getElementById('hero-success').classList.remove('hidden');
-        window.posthog?.capture('waitlist_signed_up', { location: 'hero' });
-      } else {
-        document.getElementById('hero-error').classList.remove('hidden');
-      }
-    } catch {
-      document.getElementById('hero-error').classList.remove('hidden');
-    }
-  });
-</script>
