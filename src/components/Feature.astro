@@ -1,0 +1,40 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  description: string;
+  bullets: string[];
+  reverse?: boolean;
+}
+const { eyebrow, title, description, bullets, reverse = false } = Astro.props;
+---
+
+<section class="py-20 px-6">
+  <div class="max-w-6xl mx-auto">
+    <div class={`flex flex-col ${reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 lg:gap-20 items-center`}>
+
+      <!-- Copy -->
+      <div class="flex-1">
+        <p class="text-blue-400 text-sm font-medium uppercase tracking-widest mb-3">{eyebrow}</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white leading-tight mb-4">{title}</h2>
+        <p class="text-slate-400 leading-relaxed mb-6">{description}</p>
+        <ul class="space-y-3">
+          {bullets.map((b) => (
+            <li class="flex items-start gap-3 text-sm text-slate-300">
+              <svg class="w-5 h-5 text-blue-400 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+              </svg>
+              {b}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Mockup (slot) -->
+      <div class="flex-1 w-full">
+        <slot />
+      </div>
+
+    </div>
+  </div>
+</section>

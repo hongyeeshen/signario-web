@@ -1,0 +1,84 @@
+---
+const arrowRight = `M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3`;
+const arrowDown  = `M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3`;
+---
+
+<section class="py-20 px-6 border-t border-[#1e2d4a]">
+  <div class="max-w-6xl mx-auto">
+    <p class="text-center text-slate-500 text-sm font-medium uppercase tracking-widest mb-4">Works where your team already works</p>
+    <h2 class="text-3xl sm:text-4xl font-bold text-white text-center leading-tight mb-16">
+      One bridge from feedback to action
+    </h2>
+
+    <div class="flex flex-col md:flex-row items-center gap-4 mb-16">
+
+      <!-- Slack -->
+      <div class="bg-[#0d1627] border border-[#1e2d4a] rounded-2xl p-6 text-center flex-1 w-full">
+        <div class="w-12 h-12 rounded-2xl bg-[#4A154B]/30 border border-[#4A154B]/40 flex items-center justify-center mx-auto mb-4">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M5.042 15.165a2.528 2.528 0 0 1-2.52 2.523A2.528 2.528 0 0 1 0 15.165a2.527 2.527 0 0 1 2.522-2.52h2.52v2.52zM6.313 15.165a2.527 2.527 0 0 1 2.521-2.52 2.527 2.527 0 0 1 2.521 2.52v6.313A2.528 2.528 0 0 1 8.834 24a2.528 2.528 0 0 1-2.521-2.522v-6.313zM8.834 5.042a2.528 2.528 0 0 1-2.521-2.52A2.528 2.528 0 0 1 8.834 0a2.528 2.528 0 0 1 2.521 2.522v2.52H8.834zM8.834 6.313a2.528 2.528 0 0 1 2.521 2.521 2.528 2.528 0 0 1-2.521 2.521H2.522A2.528 2.528 0 0 1 0 8.834a2.528 2.528 0 0 1 2.522-2.521h6.312zM18.956 8.834a2.528 2.528 0 0 1 2.522-2.521A2.528 2.528 0 0 1 24 8.834a2.528 2.528 0 0 1-2.522 2.521h-2.522V8.834zM17.688 8.834a2.528 2.528 0 0 1-2.523 2.521 2.527 2.527 0 0 1-2.52-2.521V2.522A2.527 2.527 0 0 1 15.165 0a2.528 2.528 0 0 1 2.523 2.522v6.312zM15.165 18.956a2.528 2.528 0 0 1 2.523 2.522A2.528 2.528 0 0 1 15.165 24a2.527 2.527 0 0 1-2.52-2.522v-2.522h2.52zM15.165 17.688a2.527 2.527 0 0 1-2.52-2.523 2.526 2.526 0 0 1 2.52-2.52h6.313A2.527 2.527 0 0 1 24 15.165a2.528 2.528 0 0 1-2.522 2.523h-6.313z" fill="#E01E5A"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-white mb-1">Feedback in</h3>
+        <p class="text-slate-500 text-sm">via Slack <code class="text-xs bg-[#1e2d4a] px-1.5 py-0.5 rounded">/product-feedback</code>, CSV import, or web widget</p>
+      </div>
+
+      <!-- Arrow -->
+      <div class="shrink-0">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center">
+          <svg class="hidden md:block" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d={arrowRight} />
+          </svg>
+          <svg class="md:hidden" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d={arrowDown} />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Signario -->
+      <div class="bg-gradient-to-br from-blue-900/30 to-cyan-900/20 border border-blue-700/30 rounded-2xl p-6 text-center flex-1 w-full">
+        <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center mx-auto mb-4">
+          <svg width="20" height="20" viewBox="0 0 32 32" fill="none">
+            <path d="M2 16 Q5 16 7 10 Q9 4 11 16 Q13 28 16 16 Q19 4 21 16 Q23 28 25 10 Q27 4 30 16"
+                  stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-white mb-1">Signario</h3>
+        <p class="text-slate-400 text-sm">AI clusters feedback, weights by ARR, and suggests what to prioritise next</p>
+      </div>
+
+      <!-- Arrow -->
+      <div class="shrink-0">
+        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center">
+          <svg class="hidden md:block" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d={arrowRight} />
+          </svg>
+          <svg class="md:hidden" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d={arrowDown} />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Linear / Jira -->
+      <div class="bg-[#0d1627] border border-[#1e2d4a] rounded-2xl p-6 text-center flex-1 w-full">
+        <div class="w-12 h-12 rounded-2xl bg-[#5E6AD2]/20 border border-[#5E6AD2]/30 flex items-center justify-center mx-auto mb-4">
+          <svg width="22" height="22" viewBox="0 0 100 100" fill="none">
+            <path d="M1.22541 61.5228c.2225-.9485 1.5181-1.2942 2.2211-.5859l35.5642 35.5642c.7083.7083.3543 1.9956-.5859 2.2211C22.1947 101.993 1.01741 79.7226 1.22541 61.5228ZM.00189135 46.8891c-.01764375 1.2011.92336565 2.1434 2.12434865 2.1434h4.0327c1.1802 0 2.1236-.9383 2.1768-2.1174C9.28753 28.5822 28.5825 9.28754 46.9174 8.40592c1.1791-.05317 2.1174-.99648 2.1174-2.17665V2.19827c0-1.20098-.9424-2.14196-2.1434-2.12434C21.4011.44841.47899 21.4013.00189135 46.8891ZM8.35957 63.9536c-.7142-.7142-.7142-1.8717 0-2.5858l.9999-.9999c.7142-.7141 1.8717-.7141 2.5858 0l29.6666 29.6666c.7142.7142.7142 1.8717 0 2.5859l-.9999.9999c-.7142.7141-1.8717.7141-2.5859 0L8.35957 63.9536ZM19.8052 52.508c-.7141-.7142-.7141-1.8717 0-2.5858l.9999-.9999c.7142-.7142 1.8717-.7142 2.5859 0l19.6214 19.6214c.7141.7142.7141 1.8717 0 2.5858l-.9999.9999c-.7142.7142-1.8717.7142-2.5859 0L19.8052 52.508ZM31.2508 41.0624c-.7142-.7142-.7142-1.8717 0-2.5858l.9999-1.0000c.7142-.7141 1.8717-.7141 2.5858 0l9.5762 9.5763c.7142.7141.7142 1.8716 0 2.5858l-.9998 1.0000c-.7143.7141-1.8718.7141-2.5859 0L31.2508 41.0624Z" fill="#5E6AD2"/>
+          </svg>
+        </div>
+        <h3 class="font-semibold text-white mb-1">Tickets out</h3>
+        <p class="text-slate-500 text-sm">one click to Linear, Jira, ClickUp, or GitHub — status synced back automatically</p>
+      </div>
+
+    </div>
+
+    <!-- Integration logo strip -->
+    <div class="flex flex-wrap items-center justify-center gap-6 text-slate-600 text-sm">
+      <span class="font-medium">Also works with:</span>
+      <span class="px-3 py-1.5 rounded-lg border border-[#1e2d4a] text-slate-500 text-xs">HubSpot CRM</span>
+      <span class="px-3 py-1.5 rounded-lg border border-[#1e2d4a] text-slate-500 text-xs">ClickUp</span>
+      <span class="px-3 py-1.5 rounded-lg border border-[#1e2d4a] text-slate-500 text-xs">GitHub</span>
+      <span class="px-3 py-1.5 rounded-lg border border-[#1e2d4a] text-slate-500 text-xs">CSV import</span>
+    </div>
+  </div>
+</section>
